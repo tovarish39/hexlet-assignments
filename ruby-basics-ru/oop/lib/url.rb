@@ -5,7 +5,7 @@ require 'uri'
 
 # BEGIN
 
-# работает но не понял как именно нужно применять Forwardable и Comparable
+# работает но не понял как именно нужно применять Comparable
 class Url
   extend Forwardable
   include Comparable
@@ -15,17 +15,9 @@ class Url
   def initialize url
     @url = URI(url)
   end
-
-  def host
-    url.host
-  end
-  
-  def scheme
-    url.scheme
-  end
   
   def query_params
-    pairs = url.query.split('&')
+    pairs = query.split('&')
     pairs.each_with_object({}) do |pair,h|
       key, value = pair.split('=')
        h[key.to_sym] = value
@@ -36,22 +28,20 @@ class Url
     params = query_params
     return query_params[key] if value.nil?
 
-    new_params = url
-      .query
+    new_params = query
       .split('&')
       .reduce([]) { |acc, (key, value)| acc << "#{key}=#{value}" }
       .join('&')
-    url.query = new_params
+    query = new_params
     value
   end
 
   def == other
-    url <==> other
-    # host == other.host &&
-    # scheme == other.scheme &&
-    # query_params == other.query_params
+    host == other.host &&
+    scheme == other.scheme &&
+    query_params == other.query_params
   end
-  # def_delegator :url, :<==>
+  def_delegators :url, :host, :scheme, :query
 end
 
 yandex_url = Url.new 'http://yandex.ru?key=value&key2=value2'
@@ -70,3 +60,5 @@ puts yandex_url == google_url # false
 yandex_url_same = Url.new 'http://yandex.ru?key2=value2&key=value'
 puts yandex_url == yandex_url_same # true
 # END
+
+
