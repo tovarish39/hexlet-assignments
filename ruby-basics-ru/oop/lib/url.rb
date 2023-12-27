@@ -11,14 +11,14 @@ class Url
   include Comparable
   
   attr_accessor :url
-  
+  def_delegators :url, :host, :scheme, :query
+
   def initialize url
     @url = URI(url)
   end
   
   def query_params
-    pairs = query.split('&')
-    pairs.each_with_object({}) do |pair,h|
+    param_pairs.each_with_object({}) do |pair,h|
       key, value = pair.split('=')
        h[key.to_sym] = value
     end
@@ -28,20 +28,32 @@ class Url
     params = query_params
     return query_params[key] if value.nil?
 
-    new_params = query
-      .split('&')
+    new_params = param_pairs
       .reduce([]) { |acc, (key, value)| acc << "#{key}=#{value}" }
       .join('&')
     query = new_params
     value
   end
 
-  def == other
+  def ==(other)
+    # self <=>(other)
     host == other.host &&
     scheme == other.scheme &&
     query_params == other.query_params
   end
-  def_delegators :url, :host, :scheme, :query
+
+  private
+  # def <=> (other)
+  #   result = host <=> other.host &&
+  #            scheme <=> other.scheme &&
+  #            query_params <=> other.query_params
+  #   result == 0 ? true : false
+  # end
+
+  def param_pairs
+    query.split('&')
+  end
+
 end
 
 yandex_url = Url.new 'http://yandex.ru?key=value&key2=value2'
@@ -60,5 +72,3 @@ puts yandex_url == google_url # false
 yandex_url_same = Url.new 'http://yandex.ru?key2=value2&key=value'
 puts yandex_url == yandex_url_same # true
 # END
-
-
