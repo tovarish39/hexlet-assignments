@@ -34,15 +34,13 @@ class Url
 
   def query_param key, value = nil
     params = query_params
-    if !value.nil?
-      new_params = url.query.split('&').reduce([]) do |acc, (key, value)|
-        acc << "#{key}=#{value}"
-      end.join('&')
-      url.query = new_params
-      value
-    else
-      query_params[key]
-    end
+    return query_params[key] if value.nil?
+
+    new_params = url.query.split('&').reduce([]) do |acc, (key, value)|
+      acc << "#{key}=#{value}"
+    end.join('&')
+    url.query = new_params
+    value
   end
 
   def == other
