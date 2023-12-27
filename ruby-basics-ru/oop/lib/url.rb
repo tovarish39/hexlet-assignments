@@ -36,9 +36,11 @@ class Url
     params = query_params
     return query_params[key] if value.nil?
 
-    new_params = url.query.split('&').reduce([]) do |acc, (key, value)|
-      acc << "#{key}=#{value}"
-    end.join('&')
+    new_params = url
+      .query
+      .split('&')
+      .reduce([]) { |acc, (key, value)| acc << "#{key}=#{value}" }
+      .join('&')
     url.query = new_params
     value
   end
