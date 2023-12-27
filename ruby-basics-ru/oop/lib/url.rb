@@ -46,9 +46,10 @@ class Url
   end
 
   def == other
-    host == other.host &&
-    scheme == other.scheme &&
-    query_params == other.query_params
+    url <==> other
+    # host == other.host &&
+    # scheme == other.scheme &&
+    # query_params == other.query_params
   end
   # def_delegator :url, :<==>
 end
