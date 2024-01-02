@@ -186,7 +186,6 @@ mammal.methods.include? :cat? #false
 
 # HOMEWORK: hexlet program download rails metaprogramming
 
-
 class User
   def log_vk_auth
     Loggers::VK.new.send_message
