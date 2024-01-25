@@ -16,8 +16,8 @@
 #  index_tasks_on_user_id    (user_id)
 #
 class Task < ApplicationRecord
-  belongs_to :user
-  belongs_to :status
+  belongs_to :user, optional: true
+  belongs_to :status, optional: true
 
   validates :name, presence: true
   # validates :name, :description, presence: true
