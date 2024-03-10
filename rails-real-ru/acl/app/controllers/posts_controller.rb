@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  after_action :verify_authorized, except: %i[ index show ]
+  after_action :verify_authorized, except: %i[index show]
 
   # BEGIN
   def index

@@ -5,11 +5,12 @@ class PostPolicy < ApplicationPolicy
   # Редактировать автор и админ
   # Удалять - админ
   # Смотреть могут все.
-  # 
+  #
   # BEGIN
   def new?
     user
   end
+
   def create?
     new?
   end
@@ -17,6 +18,7 @@ class PostPolicy < ApplicationPolicy
   def edit?
     record.author == user || user&.admin?
   end
+
   def update?
     edit?
   end
