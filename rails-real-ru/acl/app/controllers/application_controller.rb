@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# comment
 class ApplicationController < ActionController::Base
   include AuthConcern
   include Pundit::Authorization

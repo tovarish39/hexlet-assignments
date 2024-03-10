@@ -1,2 +1,3 @@
-Style/Documentation:
-  Enabled: false
+# Style/Documentation:
+#   Enabled: false
+# Style/HashEachMethods:
