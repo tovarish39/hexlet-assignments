@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# comment
 class User < ApplicationRecord
   has_secure_password
 
