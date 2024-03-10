@@ -40,6 +40,7 @@ gem 'slim-rails'
 # BEGIN
 gem 'pundit', '~> 2.3'
 gem 'rubocop'
+gem 'rubocop-rails'
 # END
 
 group :development, :test do
