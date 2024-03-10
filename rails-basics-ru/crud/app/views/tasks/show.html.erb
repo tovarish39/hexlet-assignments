@@ -1,0 +1,17 @@
+<h2>Name</h2>
+<span><%= @task.name %></span>
+<h2>Description</h2>
+<span><%= @task.description %></span>
+<h2>Status</h2>
+<span><%= @task.status %></span>
+<h2>Creator</h2>
+<span><%= @task.creator %></span>
+<h2>Performer</h2>
+<span><%= @task.performer %></span>
+<h2>Completed</h2>
+<span><%= @task.completed %></span>
+<%= link_to 'Edit', edit_task_path(@task) %>
+<%= link_to "Destroy", task_path(@task), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
