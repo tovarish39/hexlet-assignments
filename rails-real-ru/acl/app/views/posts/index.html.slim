@@ -21,11 +21,14 @@ table.table.table-striped.table-hover.mb-5
           / posts links
           = link_to t('show'), post, class: 'me-4'
           / BEGIN
-          
+          - if policy(post).edit?
+            = link_to "Edit", edit_post_path(post)
+          - if policy(post).destroy?
+            = link_to "Destroy", post_path(post), method: :destroy
           / END
 
 / new post link
 / BEGIN
-- if policy(User).show?
-  h1 = 'fsds'
+- if policy(Post).new?
+  = link_to "New post", new_post_path
 / END
