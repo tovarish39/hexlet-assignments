@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 # gem "pundit"
 
 # rails g pundit:install

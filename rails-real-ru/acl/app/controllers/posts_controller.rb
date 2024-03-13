@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# comment
 class PostsController < ApplicationController
   after_action :verify_authorized, except: %i[index show]
 
@@ -60,6 +59,5 @@ class PostsController < ApplicationController
       :body
     )
   end
-
   # END
 end

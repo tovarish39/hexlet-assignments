@@ -38,14 +38,12 @@ gem 'rails-i18n'
 gem 'simple_form'
 gem 'slim-rails'
 # BEGIN
-gem 'pundit', '~> 2.3'
-gem 'rubocop'
-gem 'rubocop-rails'
+gem 'pundit'
 # END
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  # gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'faker'
 end
 
@@ -63,6 +61,10 @@ group :development do
   gem 'spring'
 
   gem 'i18n-debug'
+
+  gem 'rubocop', '~> 1.62'
+
+  gem 'rubocop-rails', '~> 2.24'
 end
 
 group :test do

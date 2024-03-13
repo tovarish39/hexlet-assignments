@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-# comment
 class HomeController < ApplicationController
-  def index; end
+  def index
+    # byebug
+  end
 end
