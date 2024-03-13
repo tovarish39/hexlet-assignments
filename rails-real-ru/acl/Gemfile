@@ -62,9 +62,9 @@ group :development do
 
   gem 'i18n-debug'
 
-  gem 'rubocop', '~> 1.62'
+  # gem 'rubocop', '~> 1.62'
 
-  gem 'rubocop-rails', '~> 2.24'
+  # gem 'rubocop-rails', '~> 2.24'
 end
 
 group :test do
