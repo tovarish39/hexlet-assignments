@@ -7,5 +7,5 @@ class User < ApplicationRecord
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-  has_many :posts, foreign_key: 'author_id', dependent: :destroy
+  has_many :posts, foreign_key: 'author_id', dependent: :destroy # rubocop:disable Rails/InverseOf
 end
