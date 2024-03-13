@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   # BEGIN
   def index
-    @users = User.all
+    @posts = Post.all
   end
 
   def show
