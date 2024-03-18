@@ -17,12 +17,12 @@ class HackerTest < ActiveSupport::TestCase
         headers: { 'Set-Cookie': @cookie }
       )
 
-    # stub_request(:post, "#{@uri}/users")
-    #   .with(
-    #     body: hash_including({ authenticity_token: @authenticity_token }),
-    #     headers: { cookie: @cookie }
-    #   )
-    #   .to_return(status: 302)
+    stub_request(:post, "#{@uri}/users")
+      .with(
+        body: hash_including({ authenticity_token: @authenticity_token }),
+        headers: { cookie: @cookie }
+      )
+      .to_return(status: 302)
 
     response = Hacker.hack('test@test.io', 'password')
 
