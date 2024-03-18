@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'open-uri'
-require 'faraday'
-require 'nokogiri'
+# require 'faraday'
+# require 'nokogiri'
 
 class Hacker
   class << self
