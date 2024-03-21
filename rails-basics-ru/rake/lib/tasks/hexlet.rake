@@ -22,6 +22,7 @@ namespace :hexlet do
                 end
         user[column] = value
       end
+      user.save!
     end
   end
 end
