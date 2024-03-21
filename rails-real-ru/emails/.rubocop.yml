@@ -1,8 +1,0 @@
-require: rubocop-rails
-
-AllCops:
-  TargetRubyVersion: 3.2.2
-
-Style/Documentation:
-  Exclude:
-    - app/**/*

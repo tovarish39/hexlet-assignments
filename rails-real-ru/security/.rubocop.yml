@@ -1,6 +1,0 @@
-require: rubocop-rails
-
-Style/Documentation:
-  Exclude:
-    - app/**/*
-    - test/**/*
