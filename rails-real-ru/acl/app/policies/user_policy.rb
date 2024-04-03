@@ -2,7 +2,8 @@
 
 # comment
 class UserPolicy < ApplicationPolicy
-  def show?
-    user
+    def show?
+      user
+    end
   end
-end
+  

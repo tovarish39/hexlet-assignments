@@ -13,7 +13,7 @@ table.table.table-striped.table-hover.mb-5
       th
 
   tbody
-    - @posts&.each_with_index do |post, i|
+    - @posts.each_with_index do |post, i|
       tr
         th{ scope = 'row' } = i + 1
         td = post.title

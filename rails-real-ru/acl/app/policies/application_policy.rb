@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# comment
 class ApplicationPolicy
   attr_reader :user, :record
 
@@ -37,7 +36,6 @@ class ApplicationPolicy
     false
   end
 
-  # comment
   class Scope
     def initialize(user, scope)
       @user = user

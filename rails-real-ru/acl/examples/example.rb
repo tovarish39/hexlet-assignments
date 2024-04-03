@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 # gem "pundit"
 
 # rails g pundit:install
@@ -47,6 +46,7 @@
 #   redirect_to @post
 # end
 # end
+
 
 # Если нет конкретного инстанса для которого нужно проверить права, можно проверить права по имени класса
 # class PostPolicy < ApplicationPolicy
