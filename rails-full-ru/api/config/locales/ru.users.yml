@@ -1,9 +1,0 @@
----
-ru:
-  web:
-    users:
-      index:
-        new_user: Новый пользователь
-        users: Пользователи
-      show:
-        email: Почта

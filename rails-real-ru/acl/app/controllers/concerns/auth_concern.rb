@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# comment
 module AuthConcern
   extend ActiveSupport::Concern
 

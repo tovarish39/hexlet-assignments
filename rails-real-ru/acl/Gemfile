@@ -38,7 +38,9 @@ gem 'rails-i18n'
 gem 'simple_form'
 gem 'slim-rails'
 # BEGIN
-gem 'pundit'
+gem 'pundit', '~> 2.3'
+gem 'rubocop'
+gem 'rubocop-rails'
 # END
 
 group :development, :test do
