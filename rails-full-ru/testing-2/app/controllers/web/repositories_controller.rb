@@ -18,27 +18,29 @@ class Web::RepositoriesController < Web::ApplicationController
   end
 
   def create
-    # BEGIN
-    client = Octokit::Client.new
-    link = permitted_params[:link]
-    octokit_repo = Octokit::Repository.from_url(link)
-    repository_data = client.repository(octokit_repo)
-    d = repository_data
-    object = {
-      default_branch: d[:default_branch],
-      description: d[:description],
-      language: d[:language],
-      link: link,
-      owner_name: d[:owner_name],
-      repo_created_at: d[:repo_created_at],
-      repo_name: d[:repo_name],
-      watchers_count: d[:watchers_count]
-    }
-    @repository = Repository.new(object)
+    @repository = Repository.new(permitted_params)
+
     if @repository.save
-      redirect_to repositories_path, notice: 'Создан'
+      client = Octokit::Client.new
+
+      octokit_repo = Octokit::Repository.from_url(@repository.link)
+
+      github_data = client.repository(octokit_repo)
+
+      @repository.update!(
+        repo_name: github_data[:name],
+        owner_name: github_data[:owner][:login],
+        description: github_data[:description],
+        default_branch: github_data[:default_branch],
+        watchers_count: github_data[:watchers_count],
+        language: github_data[:language],
+        repo_created_at: github_data[:created_at],
+        repo_updated_at: github_data[:updated_at]
+      )
+      redirect_to @repository, notice: t('success')
     else
-      render :new, status: :unprocessable_entity, alert: 'Не создан'
+      flash[:notice] = t('fail')
+      render :new, status: :unprocessable_entity
     end
   end
 
