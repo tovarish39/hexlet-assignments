@@ -1,12 +1,6 @@
 # frozen_string_literal: true
 
-# comment
 class PostPolicy < ApplicationPolicy
-  # Создавать посты может только залогиненный пользователь
-  # Редактировать автор и админ
-  # Удалять - админ
-  # Смотреть могут все.
-  #
   # BEGIN
   def new?
     user

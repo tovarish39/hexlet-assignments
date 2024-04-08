@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
-# comment
 class PostsController < ApplicationController
   after_action :verify_authorized, except: %i[index show]
 
   # BEGIN
   def index
-    @users = User.all
+    @posts = Post.all
   end
 
   def show
@@ -60,6 +59,5 @@ class PostsController < ApplicationController
       :body
     )
   end
-
   # END
 end
